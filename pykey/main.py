@@ -96,6 +96,7 @@ class Modifier:
 class SpaceModifier(Modifier):
     code = CODE.KEY_SPACE
     mapping = {
+        CODE.KEY_Q: lambda: push_key(CODE.KEY_SLASH, modifiers=[CODE.KEY_LEFTSHIFT]),
         CODE.KEY_W: lambda: push_key(CODE.KEY_MINUS),
         CODE.KEY_E: lambda: push_key(CODE.KEY_EQUAL),
         CODE.KEY_R: lambda: push_key(CODE.KEY_EQUAL, modifiers=[CODE.KEY_LEFTSHIFT]),
@@ -112,6 +113,7 @@ def main():
     input_event = InputEvent()
 
     space_mod = SpaceModifier()
+    paused = False
     while sys.stdin.buffer.readinto(input_event) == sizeof(input_event):
 
         if input_event.type == TYPE.EV_MSC and input_event.code == CODE.MSC_SCAN:
@@ -121,14 +123,16 @@ def main():
             write_event(input_event)
             continue
 
-        if input_event.code == CODE.KEY_1:
-            exit(1)
-        if input_event.code == CODE.KEY_2:
-            log('\n\n\n\n\n\n\n')
+        if input_event.code == CODE.KEY_PAUSE and input_event.value == VALUE.KEY_DOWN:
+            continue
+        if input_event.code == CODE.KEY_PAUSE and input_event.value == VALUE.KEY_UP:
+            paused = not paused
+            log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
             continue
 
-        space_mod.handle_input(input_event)
-        log(f'is space down: {space_mod.is_space_down}')
-        log(f'is actual: {space_mod.is_actual}')
+        if paused:
+            write_event(input_event)
+            continue
 
-        log('*********************')
+
+        space_mod.handle_input(input_event)
