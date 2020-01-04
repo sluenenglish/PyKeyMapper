@@ -1,62 +1,14 @@
 import sys
-import time
 from ctypes import *
 
-from .vars import CODE, VALUE, TYPE, InputEvent
-
-
-def log(text):
-    print(str(text), file=sys.stderr)
-
-
-def log_event(input_event, extra=''):
-    if input_event.code == 0:
-        return
-    message = f'''
-
----{extra}  {time.time()}
-Code: {input_event.code}
-Value: {input_event.value}
-Type: {input_event.type}
----
-
-    '''
-    log(message)
-
-
-def write_event(event):
-    log_event(event, 'write_event')
-    sys.stdout.buffer.write(event)
-    sys.stdout.buffer.flush()
-
-
-def make_key_event(code, value):
-    event = InputEvent()
-    event.code = code
-    event.value = value
-    event.type = TYPE.EV_KEY
-    return event
-
-
-def push_key(code, modifiers=None):
-
-    if modifiers is None:
-        modifiers = []
-
-    for mod_code in modifiers:
-        write_event(make_key_event(mod_code, VALUE.KEY_DOWN))
-
-    write_event(make_key_event(code, VALUE.KEY_DOWN))
-    write_event(make_key_event(code, VALUE.KEY_UP))
-
-    for mod_code in modifiers:
-        write_event(make_key_event(mod_code, VALUE.KEY_UP))
+from .events import CODE, VALUE, TYPE, InputEvent
+from .logging import log
+from .utils import push_key, write_event
 
 
 class Modifier:
     code = None
-    mapping = {
-    }
+    mapping = {}
 
     def __init__(self):
         self.is_space_down = False
@@ -85,7 +37,6 @@ class Modifier:
             callback_function = self.mapping.get(input_event.code, default_callback)
             callback_function()
 
-
     def handle_input(self, input_event):
         if self.is_modifier_key(input_event):
             self.handle_mod_key_input(input_event)
@@ -101,38 +52,12 @@ class SpaceModifier(Modifier):
         CODE.KEY_E: lambda: push_key(CODE.KEY_EQUAL),
         CODE.KEY_R: lambda: push_key(CODE.KEY_EQUAL, modifiers=[CODE.KEY_LEFTSHIFT]),
         CODE.KEY_O: lambda: push_key(CODE.KEY_GRAVE, modifiers=[CODE.KEY_LEFTSHIFT]),
-        CODE.KEY_P: lambda: push_key(CODE.KEY_BACKSLASH, modifiers=[CODE.KEY_LEFTSHIFT]),
-
-        CODE.KEY_D: lambda: push_key(CODE.KEY_APOSTROPHE, modifiers=[CODE.KEY_LEFTSHIFT]),
+        CODE.KEY_P: lambda: push_key(
+            CODE.KEY_BACKSLASH, modifiers=[CODE.KEY_LEFTSHIFT]
+        ),
+        CODE.KEY_D: lambda: push_key(
+            CODE.KEY_APOSTROPHE, modifiers=[CODE.KEY_LEFTSHIFT]
+        ),
         CODE.KEY_F: lambda: push_key(CODE.KEY_APOSTROPHE),
         CODE.KEY_U: lambda: push_key(CODE.KEY_MINUS, modifiers=[CODE.KEY_LEFTSHIFT]),
     }
-
-
-def main():
-    input_event = InputEvent()
-
-    space_mod = SpaceModifier()
-    paused = False
-    while sys.stdin.buffer.readinto(input_event) == sizeof(input_event):
-
-        if input_event.type == TYPE.EV_MSC and input_event.code == CODE.MSC_SCAN:
-            continue
-
-        if input_event.type != TYPE.EV_KEY:
-            write_event(input_event)
-            continue
-
-        if input_event.code == CODE.KEY_PAUSE and input_event.value == VALUE.KEY_DOWN:
-            continue
-        if input_event.code == CODE.KEY_PAUSE and input_event.value == VALUE.KEY_UP:
-            paused = not paused
-            log('\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n')
-            continue
-
-        if paused:
-            write_event(input_event)
-            continue
-
-
-        space_mod.handle_input(input_event)

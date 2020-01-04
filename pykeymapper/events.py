@@ -3,17 +3,17 @@ from ctypes import Structure, c_long, c_short, c_int
 
 class TimeVal(Structure):
     _fields_ = [
-        ('time', c_long),
-        ('msec', c_long),
+        ("time", c_long),
+        ("msec", c_long),
     ]
 
 
 class InputEvent(Structure):
     _fields_ = [
-        ('time', TimeVal),
-        ('type', c_short),
-        ('code', c_short),
-        ('value', c_int),
+        ("time", TimeVal),
+        ("type", c_short),
+        ("code", c_short),
+        ("value", c_int),
     ]
 
 
