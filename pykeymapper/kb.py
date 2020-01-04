@@ -2,9 +2,28 @@ import sys
 from ctypes import sizeof
 
 from pykeymapper.events import CODE, VALUE, TYPE, InputEvent
+from pykeymapper.input_modifier import Modifier
 from pykeymapper.logging import log
-from pykeymapper.main import SpaceModifier
-from pykeymapper.utils import write_event
+from pykeymapper.utils import write_event, push_key
+
+
+class SpaceModifier(Modifier):
+    code = CODE.KEY_SPACE
+    mapping = {
+        CODE.KEY_Q: lambda: push_key(CODE.KEY_SLASH, modifiers=[CODE.KEY_LEFTSHIFT]),
+        CODE.KEY_W: lambda: push_key(CODE.KEY_MINUS),
+        CODE.KEY_E: lambda: push_key(CODE.KEY_EQUAL),
+        CODE.KEY_R: lambda: push_key(CODE.KEY_EQUAL, modifiers=[CODE.KEY_LEFTSHIFT]),
+        CODE.KEY_O: lambda: push_key(CODE.KEY_GRAVE, modifiers=[CODE.KEY_LEFTSHIFT]),
+        CODE.KEY_P: lambda: push_key(
+            CODE.KEY_BACKSLASH, modifiers=[CODE.KEY_LEFTSHIFT]
+        ),
+        CODE.KEY_D: lambda: push_key(
+            CODE.KEY_APOSTROPHE, modifiers=[CODE.KEY_LEFTSHIFT]
+        ),
+        CODE.KEY_F: lambda: push_key(CODE.KEY_APOSTROPHE),
+        CODE.KEY_U: lambda: push_key(CODE.KEY_MINUS, modifiers=[CODE.KEY_LEFTSHIFT]),
+    }
 
 
 def main():
