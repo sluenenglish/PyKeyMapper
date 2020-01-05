@@ -1,6 +1,6 @@
 """Console script for pykeymapper."""
-import sys
 import click
+import sys
 
 
 @click.command()

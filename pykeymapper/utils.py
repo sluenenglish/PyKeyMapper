@@ -1,5 +1,6 @@
-import sys
 import logging
+
+import sys
 
 from pykeymapper.events import InputEvent, TYPE, VALUE
 
