@@ -2,7 +2,7 @@ from ctypes import sizeof
 
 import sys
 
-from pykeymapper import InputEvent, CODE, TYPE, write_event, log, VALUE
+from pykeymapper import InputEvent, CODE, TYPE, write_event, VALUE
 
 
 def run_mapper(mapper):
@@ -23,7 +23,6 @@ def run_mapper(mapper):
             continue
         if input_event.code == CODE.KEY_PAUSE and input_event.value == VALUE.KEY_UP:
             paused = not paused
-            log("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
             continue
 
         if paused:

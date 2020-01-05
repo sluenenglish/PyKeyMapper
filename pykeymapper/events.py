@@ -16,6 +16,9 @@ class InputEvent(Structure):
         ("value", c_int),
     ]
 
+    def __str__(self):
+        return f"Code: {self.code:3}    Value: {self.value:3}    Type: {self.type:3}"
+
 
 class VALUE:
     KEY_UP = 0

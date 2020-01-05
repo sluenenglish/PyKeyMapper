@@ -1,11 +1,13 @@
 import sys
+import logging
 
 from pykeymapper.events import InputEvent, TYPE, VALUE
-from pykeymapper.logging import log_event
+
+logger = logging.getLogger(__name__)
 
 
 def write_event(event):
-    log_event(event, "write_event")
+    logger.debug(f"Writing event: {str(event)}")
     sys.stdout.buffer.write(event)
     sys.stdout.buffer.flush()
 
