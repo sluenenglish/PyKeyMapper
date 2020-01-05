@@ -3,8 +3,8 @@ PyKeyMapper
 ===========
 
 .. image:: https://readthedocs.org/projects/pykeymapper/badge/?version=latest
-:target: https://pykeymapper.readthedocs.io/en/latest/?badge=latest
-:alt: Documentation Status
+   :target: https://pykeymapper.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
 
 A Python library with utilities to help construct "interception" input manipulation flows.
 
