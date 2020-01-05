@@ -7,7 +7,7 @@ class Modifier:
     mapping = {}
 
     def __init__(self):
-        self.is_space_down = False
+        self.is_mod_down = False
         self.is_actual = True
 
     def is_modifier_key(self, input_event):
@@ -15,17 +15,17 @@ class Modifier:
 
     def handle_mod_key_input(self, input_event):
         if input_event.value == VALUE.KEY_DOWN:
-            self.is_space_down = True
+            self.is_mod_down = True
             self.is_actual = True
 
         if input_event.value == VALUE.KEY_UP:
-            self.is_space_down = False
+            self.is_mod_down = False
             if self.is_actual:
                 push_key(input_event.code)
 
     def handle_other_input(self, input_event):
 
-        if not self.is_space_down:
+        if not self.is_mod_down:
             write_event(input_event)
         elif input_event.value == VALUE.KEY_DOWN:
             self.is_actual = False
