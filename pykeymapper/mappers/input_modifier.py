@@ -4,6 +4,7 @@ from pykeymapper.utils import push_key, write_event
 
 class Modifier:
     code = None
+    release_code = None
     mapping = {}
 
     def __init__(self):
@@ -13,6 +14,9 @@ class Modifier:
     def is_modifier_key(self, input_event):
         return input_event.code == self.code
 
+    def get_release_code(self):
+        return self.release_code or self.code
+
     def handle_mod_key_input(self, input_event):
         if input_event.value == VALUE.KEY_DOWN:
             self.is_mod_down = True
@@ -21,7 +25,7 @@ class Modifier:
         if input_event.value == VALUE.KEY_UP:
             self.is_mod_down = False
             if self.is_actual:
-                push_key(input_event.code)
+                push_key(self.get_release_code())
 
     def handle_other_input(self, input_event):
 
