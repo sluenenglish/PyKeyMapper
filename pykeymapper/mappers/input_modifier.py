@@ -1,5 +1,5 @@
-from .events import VALUE
-from .utils import push_key, write_event
+from pykeymapper.events import VALUE
+from pykeymapper.utils import push_key, write_event
 
 
 class Modifier:

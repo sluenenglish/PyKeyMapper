@@ -6,7 +6,6 @@ import pytest
 
 from click.testing import CliRunner
 
-from pykeymapper import pykeymapper
 from pykeymapper import cli
 
 
