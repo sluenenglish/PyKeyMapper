@@ -33,9 +33,12 @@ class Modifier:
             write_event(input_event)
         elif input_event.value == VALUE.KEY_DOWN:
             self.is_actual = False
-            default_callback = lambda: push_key(input_event.code)
-            callback_function = self.mapping.get(input_event.code, default_callback)
-            callback_function()
+            try:
+                callback_function = self.mapping[input_event.code]
+            except KeyError:
+                callback_function = lambda input_event_code: push_key(input_event_code)
+
+            callback_function(input_event.code)
 
     def handle_input(self, input_event):
         if self.is_modifier_key(input_event):
