@@ -6,6 +6,11 @@ PyKeyMapper
    :target: https://pykeymapper.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
+.. image:: https://gitlab.com/sluenenglish/pykeymapper/badges/master/pipeline.svg
+   :target: https://gitlab.com/sluenenglish/pykeymapper/-/commits/master
+   :alt: Gitlab pipeline status (branch)
+
+
 A Python library with utilities to help construct "interception" input manipulation flows.
 
 * Free software: MIT license
