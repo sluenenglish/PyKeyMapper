@@ -10,16 +10,22 @@ python36:
     image: python:3.6
     stage: test
     script:
-        - tox -e py36,black
+        - tox -e py36
 
 python37:
     image: python:3.7
     stage: test
     script:
-        - tox -e py37,black
+        - tox -e py37
 
 python38:
     image: python:3.8
     stage: test
     script:
-        - tox -e py38,black
+        - tox -e py38
+
+lint:
+    image: python
+    stage: test
+    script:
+        - tox -e black
