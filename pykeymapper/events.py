@@ -17,7 +17,10 @@ class InputEvent(Structure):
     ]
 
     def __str__(self):
-        return f"Code: {self.code:3}    Value: {self.value:3}    Type: {self.type:3}"
+        if self.type == TYPE.EV_SYN:
+            return f"===SYN==="
+
+        return f"Code: {CODE.reverse_lookup(self.code):15}\t\tValue: {VALUE.reverse_lookup(self.value):15}\t\tType: {TYPE.reverse_lookup(self.type):15}\t\t{CODE.reverse_lookup(self.code) if self.value else ''}"
 
 
 class VALUE:
@@ -26,10 +29,21 @@ class VALUE:
     KEY_REPEAT = 2
 
 
+    @classmethod
+    def reverse_lookup(cls, code):
+        lookup_dict = {v: k for k,v in cls.__dict__.items() if k.startswith('KEY_')}
+        return lookup_dict.get(code, code)
+
+
 class TYPE:
     EV_SYN = 0x00
     EV_KEY = 0x01
     EV_MSC = 0x04
+
+    @classmethod
+    def reverse_lookup(cls, code):
+        lookup_dict = {v: k for k,v in cls.__dict__.items() if k.startswith('EV_')}
+        return lookup_dict.get(code, code)
 
 
 class CODE:
@@ -163,3 +177,9 @@ class CODE:
     KEY_LEFTMETA = 125
     KEY_RIGHTMETA = 126
     KEY_COMPOSE = 127
+
+
+    @classmethod
+    def reverse_lookup(cls, code):
+        lookup_dict = {v: k for k,v in cls.__dict__.items() if k.startswith('KEY_')}
+        return lookup_dict.get(code, code)
