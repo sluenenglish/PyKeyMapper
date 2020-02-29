@@ -13,11 +13,11 @@ def write_event(event):
     sys.stdout.buffer.flush()
 
 
-def make_key_event(code, value):
+def make_key_event(code, value, type=None):
     event = InputEvent()
     event.code = code
     event.value = value
-    event.type = TYPE.EV_KEY
+    event.type = type or TYPE.EV_KEY
     return event
 
 
