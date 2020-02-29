@@ -7,17 +7,11 @@ from setuptools import setup, find_packages
 with open("README.rst") as readme_file:
     readme = readme_file.read()
 
-requirements = [
-    "Click>=7.0",
-]
+requirements = ["Click>=7.0"]
 
-setup_requirements = [
-    "pytest-runner",
-]
+setup_requirements = ["pytest-runner"]
 
-test_requirements = [
-    "pytest>=3",
-]
+test_requirements = ["pytest>=3"]
 
 setup(
     author="Samuel Luen-English",
@@ -34,7 +28,7 @@ setup(
         "Programming Language :: Python :: 3.8",
     ],
     description=' A Python library with utilities to help contruct "interception" input manipulation flows.',
-    entry_points={"console_scripts": ["pykeymapper=pykeymapper.cli:main",],},
+    entry_points={"console_scripts": ["pykeymapper=pykeymapper.cli:main"]},
     install_requires=requirements,
     license="MIT license",
     long_description=readme,

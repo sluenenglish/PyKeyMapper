@@ -2,10 +2,7 @@ from ctypes import Structure, c_long, c_short, c_int
 
 
 class TimeVal(Structure):
-    _fields_ = [
-        ("time", c_long),
-        ("msec", c_long),
-    ]
+    _fields_ = [("time", c_long), ("msec", c_long)]
 
 
 class InputEvent(Structure):
@@ -28,10 +25,9 @@ class VALUE:
     KEY_DOWN = 1
     KEY_REPEAT = 2
 
-
     @classmethod
     def reverse_lookup(cls, code):
-        lookup_dict = {v: k for k,v in cls.__dict__.items() if k.startswith('KEY_')}
+        lookup_dict = {v: k for k, v in cls.__dict__.items() if k.startswith("KEY_")}
         return lookup_dict.get(code, code)
 
 
@@ -42,7 +38,7 @@ class TYPE:
 
     @classmethod
     def reverse_lookup(cls, code):
-        lookup_dict = {v: k for k,v in cls.__dict__.items() if k.startswith('EV_')}
+        lookup_dict = {v: k for k, v in cls.__dict__.items() if k.startswith("EV_")}
         return lookup_dict.get(code, code)
 
 
@@ -178,8 +174,7 @@ class CODE:
     KEY_RIGHTMETA = 126
     KEY_COMPOSE = 127
 
-
     @classmethod
     def reverse_lookup(cls, code):
-        lookup_dict = {v: k for k,v in cls.__dict__.items() if k.startswith('KEY_')}
+        lookup_dict = {v: k for k, v in cls.__dict__.items() if k.startswith("KEY_")}
         return lookup_dict.get(code, code)

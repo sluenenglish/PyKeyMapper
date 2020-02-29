@@ -131,7 +131,7 @@ latex_documents = [
         "PyKeyMapper Documentation",
         "Samuel Luen-English",
         "manual",
-    ),
+    )
 ]
 
 
@@ -156,5 +156,5 @@ texinfo_documents = [
         "pykeymapper",
         "One line description of project.",
         "Miscellaneous",
-    ),
+    )
 ]
