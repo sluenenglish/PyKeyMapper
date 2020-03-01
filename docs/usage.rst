@@ -8,7 +8,7 @@ PyKeyMapper is designed to be used in an `interception tools`_  flow.
 
 
 Pre-made
--------
+--------
 For example, to map backslash to shift when pressed in conjunction with another key
 you would use the following configuration file for `udevmon`.
 
@@ -23,6 +23,7 @@ you would use the following configuration file for `udevmon`.
           EV_KEY: [KEY_BACKSLASH]
 
 To see available mappings:
+
     .. code-block:: console
 
         pykeymapper --help
