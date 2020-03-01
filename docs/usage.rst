@@ -7,7 +7,7 @@ PyKeyMapper is designed to be used in an `interception tools`_  flow.
 .. _`interception tools`: https://gitlab.com/interception/linux/tools/
 
 
-Premade
+Pre-made
 -------
 For example, to map backslash to shift when pressed in conjunction with another key
 you would use the following configuration file for `udevmon`.
@@ -23,7 +23,7 @@ you would use the following configuration file for `udevmon`.
           EV_KEY: [KEY_BACKSLASH]
 
 To see available mappings:
-    .. code-block:: shell
+    .. code-block:: console
 
         pykeymapper --help
 
@@ -35,7 +35,7 @@ macros when pressed in combination with another key.
 
 Let's take a look at a simplified version of the `Special Space` modifier.
 
-.. code-block:: shell
+.. code-block:: python
 
     from pykeymapper import CustomModifier, CODE, push_key, run_mapper
 
