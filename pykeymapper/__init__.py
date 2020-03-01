@@ -11,6 +11,6 @@ from .modifiers.custom_modifier import CustomModifier
 from .modifiers.existing_modifier import ExistingModifier
 from .utils import *
 from .runner import run_mapper
-from .import premade
+from . import premade
 
 logging.getLogger(__name__).addHandler(NullHandler())

@@ -8,6 +8,7 @@ class ExistingModifier(Modifier):
     Add "tap" functionality to an existing modifier.
 
     """
+
     def handle_mod_key_input(self, input_event):
         if input_event.value == VALUE.KEY_DOWN:
             self.is_key_down = True

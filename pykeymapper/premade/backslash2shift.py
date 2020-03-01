@@ -11,4 +11,3 @@ class BackSlash2Shift(CustomModifier):
             input_event_code, modifiers=[CODE.KEY_LEFTSHIFT]
         )
     )
-

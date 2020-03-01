@@ -8,6 +8,7 @@ class CustomModifier(Modifier):
     Create a modifier from a normal key.
 
     """
+
     macros = {}
 
     def handle_mod_key_input(self, input_event):
