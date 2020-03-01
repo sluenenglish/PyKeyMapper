@@ -26,19 +26,19 @@ you through the process.
 From sources
 ------------
 
-The sources for PyKeyMapper can be downloaded from the `Github repo`_.
+The sources for PyKeyMapper can be downloaded from the `GitLab repo`_.
 
 You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/sluenenglish/pykeymapper
+    $ git clone git@gitlab.com:sluenenglish/pykeymapper.git
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/sluenenglish/pykeymapper/tarball/master
+    $ curl -OJL https://gitlab.com/sluenenglish/pykeymapper/repository/archive.zip
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/sluenenglish/pykeymapper
-.. _tarball: https://github.com/sluenenglish/pykeymapper/tarball/master
+.. _GitLab repo: https://gitlab.com/sluenenglish/pykeymapper
+.. _tarball: https://gitlab.com/sluenenglish/pykeymapper/repository/archive.zip

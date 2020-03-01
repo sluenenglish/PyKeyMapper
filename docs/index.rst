@@ -1,5 +1,5 @@
 Welcome to PyKeyMapper's documentation!
-======================================
+=======================================
 
 .. toctree::
    :maxdepth: 2

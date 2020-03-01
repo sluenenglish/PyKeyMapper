@@ -11,14 +11,33 @@ PyKeyMapper
    :alt: Gitlab pipeline status (branch)
 
 
-A Python library with utilities to help construct "interception" input manipulation flows.
+PyKeyMapper is an unofficial plugin for `interception tools`_.
+It provides a set of utilities to easily create executables which manipulate input to create advanced keyboard mappings.
 
-* Free software: MIT license
+.. _`interception tools`: https://gitlab.com/interception/linux/tools/
 
-Features
---------
+A set of preconfigured executables are supplied for inspiration and convenience,
+but it is easy (and encouraged) to make your own.
 
-* TODO
+Preconfigured keyboard mappings can used via the command line interface:
+
+.. code-block:: console
+
+    $ pykeymapper --help
+
+    Usage: pykeymapper [OPTIONS] COMMAND [ARGS]...
+
+      PyKeyMapper - A tool to customise your keyboard
+
+    Options:
+      --help  Show this message and exit.
+
+    Commands:
+      alt-brackets        Turn alt key into "Bracket Button"
+      backslash2shift     Make backslash shift when pressed with another key
+      forwardslash2shift  Make forward slash shift when pressed with another key
+      special-space       Turn space into "Special Character key"
+
 
 Credits
 -------
