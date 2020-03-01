@@ -29,3 +29,13 @@ lint:
     stage: test
     script:
         - tox -e black
+
+deploy_production:
+  stage: deploy
+  variables:
+    TWINE_USERNAME: "__token__"
+    TWINE_PASSWORD: $PYPI_TOKEN
+  script:
+    - make release
+  only:
+    - tags
