@@ -10,6 +10,10 @@ PyKeyMapper
    :target: https://gitlab.com/sluenenglish/pykeymapper/-/commits/master
    :alt: Gitlab pipeline status (branch)
 
+.. image:: https://img.shields.io/pypi/v/pykeymapper
+   :target: https://pypi.org/project/pykeymappe
+   :alt: PyPI
+
 
 PyKeyMapper is an unofficial plugin for `interception tools`_.
 It provides a set of utilities to easily create executables which manipulate input to create advanced keyboard mappings.
