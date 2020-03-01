@@ -11,7 +11,7 @@ PyKeyMapper
    :alt: Gitlab pipeline status (branch)
 
 .. image:: https://img.shields.io/pypi/v/pykeymapper
-   :target: https://pypi.org/project/pykeymappe
+   :target: https://pypi.org/project/pykeymapper
    :alt: PyPI
 
 
